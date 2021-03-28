@@ -1,0 +1,13 @@
+en:
+  flash:
+    login:
+      required: 'You should be logged in to access this page.'
+      error: "Wrong email and password combination"
+    logout:
+      success: 'Logged out successfully.'
+    register:
+      error: 'Registration failed.'
+  response:
+    welcome: 'Welcome, %{name} %{surname}!'
+    errors:
+      detected: 'Errors detected: '

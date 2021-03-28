@@ -1,0 +1,8 @@
+%div.row.justify-content-center.mt-3
+  %h2= t('login.login')
+%div.row.justify-content-center.mt-3
+  %div.card.col-6.pt-3.pb-3
+    = bootstrap_form_with url: login_path, local: true do |f|
+      = f.email_field :email
+      = f.password_field :password
+      = f.submit t('login.login'), class: 'btn btn-success'
