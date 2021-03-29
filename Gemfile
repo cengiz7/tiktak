@@ -31,6 +31,10 @@ gem 'turbolinks', '~> 5'
 gem 'rails-i18n'
 gem "strip_attributes"
 gem 'tinymce-rails'
+
+gem 'foundation-rails', '~> 6.6.2'
+gem 'autoprefixer-rails'
+
 # Use Active Storage variant
 # gem 'image_processing', '~> 1.2'
 
