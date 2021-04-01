@@ -14,7 +14,7 @@ module App
     config.i18n.available_locales = [:en, :tr]
     config.i18n.default_locale = :en
 
-    config.tinymce.install = :compile
+    # config.tinymce.install = :compile
     # Configuration for the application, engines, and railties goes here.
     #
     # These settings can be overridden in specific environments using the files

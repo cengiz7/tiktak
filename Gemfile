@@ -24,16 +24,18 @@ gem 'haml'
 gem 'mini_racer', :platforms => :ruby
 
 gem 'jquery-rails'
-gem 'bootstrap', '>= 4'
-gem 'bootstrap_form', '>= 4'
-gem 'will_paginate-bootstrap4'
+#gem 'bootstrap', '>= 4'
+#gem 'bootstrap_form', '>= 4'
+#gem 'will_paginate-bootstrap4'
 gem 'turbolinks', '~> 5'
 gem 'rails-i18n'
 gem "strip_attributes"
-gem 'tinymce-rails'
+#gem 'tinymce-rails'
+gem "font-awesome-rails"
 
 gem 'foundation-rails', '~> 6.6.2'
 gem 'autoprefixer-rails'
+gem 'foundation_rails_helper'
 
 # Use Active Storage variant
 # gem 'image_processing', '~> 1.2'
