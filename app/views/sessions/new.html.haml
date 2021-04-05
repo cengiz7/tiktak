@@ -1,8 +1,7 @@
-%div.row.justify-content-center.mt-3
+%div.row
   %h2= t('login.login')
-%div.row.justify-content-center.mt-3
-  %div.card.col-6.pt-3.pb-3
-    = form_with url: login_path do |f|
-      = f.email_field :email
-      = f.password_field :password
-      = f.submit t('login.login'), class: 'btn btn-success'
+%div.row
+  = form_with url: login_path do |f|
+    = f.email_field :email
+    = f.password_field :password
+    = f.submit t('login.login'), class: 'button'

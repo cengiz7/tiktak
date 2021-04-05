@@ -4,7 +4,7 @@ Rails.application.routes.draw do
   get    'login'  => 'sessions#new'
   post   'login'  => 'sessions#create'
   delete 'logout' => 'sessions#destroy'
-  get  'dashboard'=> 'dashboard#index'
 
   resources :users
+  resources :time_logs, path: 'timer'
 end

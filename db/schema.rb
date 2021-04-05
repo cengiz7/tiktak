@@ -10,24 +10,52 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_03_28_103547) do
+ActiveRecord::Schema.define(version: 2021_04_05_194455) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
   create_table "clients", force: :cascade do |t|
+    t.bigint "user_id"
     t.string "name", null: false
+    t.bigint "project_id"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.index ["project_id"], name: "index_clients_on_project_id"
+    t.index ["user_id"], name: "index_clients_on_user_id"
+  end
+
+  create_table "project_users", force: :cascade do |t|
+    t.bigint "project_id"
+    t.bigint "user_id"
+    t.boolean "is_author", default: false, null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["project_id"], name: "index_project_users_on_project_id"
+    t.index ["user_id"], name: "index_project_users_on_user_id"
   end
 
   create_table "projects", force: :cascade do |t|
     t.string "name", null: false
     t.boolean "archived", default: false
     t.string "slug", null: false
+    t.boolean "private", default: true, null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.string "color_code"
+  end
+
+  create_table "time_logs", force: :cascade do |t|
+    t.bigint "user_id"
+    t.text "comment", default: ""
+    t.integer "time_log_type"
+    t.datetime "started_at"
+    t.datetime "finished_at"
+    t.bigint "project_id"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["project_id"], name: "index_time_logs_on_project_id"
+    t.index ["user_id"], name: "index_time_logs_on_user_id"
   end
 
   create_table "users", force: :cascade do |t|
@@ -40,4 +68,8 @@ ActiveRecord::Schema.define(version: 2021_03_28_103547) do
     t.string "password_digest"
   end
 
+  add_foreign_key "clients", "projects"
+  add_foreign_key "project_users", "projects"
+  add_foreign_key "project_users", "users"
+  add_foreign_key "time_logs", "projects"
 end

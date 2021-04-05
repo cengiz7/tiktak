@@ -2,7 +2,11 @@ class User < ApplicationRecord
   require 'bcrypt'
 
   has_secure_password
-  has_and_belongs_to_many :projects
+  has_many :project_users
+  has_many :projects, through: :project_users
+  has_many :time_logs
+  has_many :clients
+  has_many :tags
 
   strip_attributes only: [:name, :surname, :email], allow_empty: true, collapse_spaces: true
 

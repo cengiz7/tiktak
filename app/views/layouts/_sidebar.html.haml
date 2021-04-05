@@ -1,0 +1,26 @@
+#app-dashboard-sidebar.app-dashboard-sidebar.position-left.off-canvas.off-canvas-absolute.reveal-for-medium{"data-off-canvas" => ""}
+  .app-dashboard-sidebar-title-area
+    .app-dashboard-close-sidebar
+      .span
+      %button#close-sidebar.app-dashboard-sidebar-close-button.show-for-medium{"aria-label" => "Close menu", "data-app-dashboard-toggle-shrink" => "", :type => "button"}
+        %span{"aria-hidden" => "true"}
+          %a{:href => "#"}
+            %i.large.fa.fa-angle-double-left
+    .app-dashboard-open-sidebar
+      %button#open-sidebar.app-dashboard-open-sidebar-button.show-for-medium{"aria-label" => "open menu", "data-app-dashboard-toggle-shrink" => "", :type => "button"}
+        %span{"aria-hidden" => "true"}
+          %a{:href => "#"}
+            %i.large.fa.fa-angle-double-right
+  .app-dashboard-sidebar-inner
+    %ul.menu.vertical
+      %li
+        %a.is-active{:href => "#"}
+          %i.large.fa.fa-hourglass-half
+          %span.app-dashboard-sidebar-text Timer
+      %li
+        %a
+          %i.large.fa.fa-folder-open
+          %span.app-dashboard-sidebar-text Projects
+  .app-dashboard-sidebar-footer
+    .columns.app-dashboard-top-bar-actions
+      = link_to "Log out", logout_url, class: 'button hallow', :method => :delete

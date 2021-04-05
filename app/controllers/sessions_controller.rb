@@ -3,10 +3,15 @@ class SessionsController < ApplicationController
   skip_before_action :authenticate_user!
 
   def new
-    @user = User.new
+    unless current_user.nil?
+      redirect_to time_logs_path
+    end
   end
 
   def welcome
+    unless current_user.nil?
+      redirect_to time_logs_path
+    end
   end
 
   def create
@@ -14,7 +19,7 @@ class SessionsController < ApplicationController
 
     if @user && @user.authenticate(params[:password])
       session[:user_id] = @user.id.to_s
-      redirect_to dashboard_path, notice: I18n.t('response.welcome', name: @user.name, surname: @user.surname)
+      redirect_to root_path, notice: I18n.t('response.welcome', name: @user.name, surname: @user.surname)
     else
       flash[:error] = I18n.t('flash.login.error')
       render :new

@@ -4,6 +4,7 @@ class CreateProjects < ActiveRecord::Migration[6.1]
       t.string :name, null: false
       t.boolean :archived, default: false
       t.string :slug, null: false
+      t.boolean :private, default: true, null: false
 
       t.timestamps
     end

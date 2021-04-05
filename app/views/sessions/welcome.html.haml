@@ -1,11 +1,11 @@
-%div.row.justify-content-center.mt-3
+%div.row
   %h2 Welcome
-%div.row.justify-content-center.mt-3
-  %div.card.col-6.pt-3.pb-3
-    - if current_user.present?
-      %h3= I18n.t('response.welcome', name: current_user.name, surname: current_user.surname)
-      = button_to t('sing_out'), logout_path, method: :delete
-    - else
-      = button_to t('login.login'), login_path, method: :get
-      = button_to t('sign_up'), new_user_path, method: :get
+%div.row
+  - if current_user.present?
+    %h3= I18n.t('response.welcome', name: current_user.name, surname: current_user.surname)
+    = button_to t('sing_out'), logout_path, method: :delete
+  - else
+    %div.callout-clearfix{style: 'width: 200px'}
+      = button_to t('login.login'),  login_path,class: 'button float-left', method: :get
+      = button_to t('sign_up'), new_user_path, class: 'button float-right', method: :get
 

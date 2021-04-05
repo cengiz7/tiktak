@@ -12,6 +12,15 @@
     = javascript_include_tag 'application', 'data-turbolinks-track': 'reload'
 
   %body
-    = display_flash_messages
-    -#= render 'shared/flash'
-    = yield
+    - if current_user.nil?
+      = display_flash_messages
+      = yield
+    - else
+      .app-dashboard.shrink-medium
+        = render 'layouts/navbar'
+        .app-dashboard-body.off-canvas-wrapper
+          = render 'layouts/sidebar'
+          .app-dashboard-body-content.off-canvas-content{"data-off-canvas-content" => ""}
+            = display_flash_messages
+            = yield
+
