@@ -11,3 +11,5 @@ en:
     welcome: 'Welcome, %{name} %{surname}!'
     errors:
       detected: 'Errors detected: '
+  validations:
+    invalid_time_zone: 'is not a valid time zone.'
