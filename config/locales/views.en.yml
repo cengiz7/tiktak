@@ -3,3 +3,7 @@ en:
     login: 'Log In'
   sign_up: 'Sign Up'
   sing_out: 'Sign Out'
+  timelogs:
+    time:
+      start: 'START'
+      stop: 'STOP'

@@ -2,7 +2,7 @@
 
 .timelog-header {
   padding: 1rem;
-  background: $dark-gray;
+  background: darken($medium-gray, 20%);
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -12,12 +12,27 @@
       margin-right: 0;
     }
 
-    .fa {
-      font-size: 1.3rem;
+    #counter {
+      margin-left: 1rem;
+      margin-right: 1rem;
+      display: -webkit-flex;
+      display: flex;
+      align-items: center;
+      justify-content: right;
+      height: auto;
+      font-size: 1.2rem;
+      font-weight: bold;
+      border: none;
+      background-color: transparent;
+      width: 85px;
+    }
+
+    .input-group-button .fa {
+      font-size: 1.4rem;
       color: $white;
 
       &:hover {
-        color: darken($dark-gray, 25%);
+        color: darken($dark-gray, 5%);
         transition: color 0.3s ease-in;
       }
     }
@@ -25,10 +40,22 @@
 }
 
 .input-group-rounded {
+  position: relative;
+
   .input-group-field {
     border-radius: 5000px 0 0 5000px !important;
     padding-left: 1rem !important;
     padding-right: 5rem !important;
+    text-indent: 5px;
+  }
+
+  .input-group-field .input-icon {
+    position: absolute;
+    left: 7px;
+    top: calc(50% - 0.5em);
+    color: black;
+    font-size: 1rem;
+    float: right;
   }
 
   .input-group-button .button {

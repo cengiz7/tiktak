@@ -37,6 +37,8 @@ gem 'foundation-rails', '~> 6.6.2'
 gem 'autoprefixer-rails'
 gem 'foundation_rails_helper'
 
+gem 'foundation-datepicker-rails', '~> 0.0.3'
+
 # Use Active Storage variant
 # gem 'image_processing', '~> 1.2'
 

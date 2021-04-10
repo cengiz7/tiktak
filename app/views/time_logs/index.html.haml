@@ -2,10 +2,27 @@
   .span
   .timelog-header-right
     .input-group.input-group-rounded
-      %input.input-group-field{:type => "search", placeholder: 'Denemeeeeeddedeed'}/
+      %input.input-group-field{:type => "search", placeholder: 'What are you working on?'}
       .input-group-button
         = button_tag(type: 'submit', class: 'button') do
           %i.fa.fa-play-circle
+      %input#counter{"data-toggle" => "datetime-dropdown", value: '0:00:00'}
+      #datetime-dropdown.dropdown-pane.bottom.float-right{"data-auto-focus" => "true", "data-dropdown" => "", 'data-close-on-click' => 'true'}
+        %form
+          .grid-container
+            .grid-x.grid-margin-x
+              .cell.medium-6
+                %label
+                  %strong= t('timelogs.time.start')
+                  %input{type: "text"}/
+              .cell.medium-6
+                %label
+                  %strong= t('timelogs.time.stop')
+                  %input{type: "text"}/
+              .cell.large-auto
+                %hr
+                %div{style: 'height: 220px !important;'}
+                  #timelog-datepicker
 
 -#  .timelog-header-right
 -#    %ul.menu.simple
