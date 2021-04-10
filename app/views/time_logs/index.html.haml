@@ -1,21 +1,20 @@
 .timelog-header
-  .timelog-header-left
-    %a{:href => "#"}
-      %img.logo{:src => "https://via.placeholder.com/140x100"}/
+  .span
   .timelog-header-right
-    %ul.menu.simple
-      %li
-        %a{:href => "https://www.facebook.com/"}
-          %i.fa.fa-facebook{"aria-hidden" => "true"}
-      %li
-        %a{:href => "https://www.instagram.com/?hl=en"}
-          %i.fa.fa-instagram{"aria-hidden" => "true"}
-      %li
-        %a{:href => "https://www.pinterest.com/"}
-          %i.fa.fa-pinterest-p{"aria-hidden" => "true"}
-      %li
-        %a{:href => "https://twitter.com/?lang=en"}
-          %i.fa.fa-twitter{"aria-hidden" => "true"}
+    .input-group.input-group-rounded
+      %input.input-group-field{:type => "search", placeholder: 'Denemeeeeeddedeed'}/
+      .input-group-button
+        = button_tag(type: 'submit', class: 'button') do
+          %i.fa.fa-play-circle
+
+-#  .timelog-header-right
+-#    %ul.menu.simple
+-#      %li
+-#        %a{:href => "https://www.facebook.com/"}
+-#          %i.fa.fa-facebook{"aria-hidden" => "true"}
+-#      %li
+-#        %a{:href => "https://www.instagram.com/?hl=en"}
+-#          %i.fa.fa-instagram{"aria-hidden" => "true"}
 
 :scss
   .app-dashboard-body-content { padding: 0px !important;}

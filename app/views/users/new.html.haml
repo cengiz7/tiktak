@@ -2,8 +2,14 @@
   %h2= t('sign_up')
 %div.row
   = form_for @user do |f|
+    = f.hidden_field :time_zone
     = f.text_field :name
     = f.text_field :surname
     = f.email_field :email
     = f.password_field :password
     = f.submit t('sign_up')
+
+:javascript
+  $(document).on("turbolinks:load", function () {
+    document.getElementById('user_time_zone').value = new window.Intl.DateTimeFormat().resolvedOptions().timeZone
+    })
