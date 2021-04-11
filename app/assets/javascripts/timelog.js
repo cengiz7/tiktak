@@ -1,5 +1,6 @@
 
-$(document).on("turbolinks:load", function () {
+function timelog_functions() {
+    alert(12);
     $('#timelog-datepicker').fdatepicker({
         inline: false,
         format: 'yyyy-mm-dd'
@@ -21,41 +22,43 @@ $(document).on("turbolinks:load", function () {
         insertMode: false,
         showMaskOnHover: false
     });
+}
 
-    function Kronometre(Id, Saniye){
+$(document).on("turbolinks:load", timelog_functions);
 
-        this.gercekSaniye = Saniye || 0;
-        this.saniye = Saniye || 0;
-        this.interval;
+function Kronometre(Id, Saniye){
 
-        this.baslat = function(){
-            this.sayacElem = document.getElementById(Id);
-            if ( !this.interval ){
-                this.sayac();
-                this.interval = setInterval(this.sayac.bind(this), 1000);
-            }
-        };
+    this.gercekSaniye = Saniye || 0;
+    this.saniye = Saniye || 0;
+    this.interval;
 
-        this.sayac = function(){
-            var toplamSaniye = this.saniye;
-            var saat = parseInt( toplamSaniye / 3600 ) % 24;
-            var dakika = parseInt( toplamSaniye / 60 ) % 60;
-            var saniye = toplamSaniye % 60;
+    this.baslat = function(){
+        this.sayacElem = document.getElementById(Id);
+        if ( !this.interval ){
+            this.sayac();
+            this.interval = setInterval(this.sayac.bind(this), 1000);
+        }
+    };
 
-            this.sayacElem.innerHTML = (saat < 10 ? "0" + saat : saat) + ":" + (dakika < 10 ? "0" + dakika : dakika) + ":" + (saniye  < 10 ? "0" + saniye : saniye);
+    this.sayac = function(){
+        var toplamSaniye = this.saniye;
+        var saat = parseInt( toplamSaniye / 3600 ) % 24;
+        var dakika = parseInt( toplamSaniye / 60 ) % 60;
+        var saniye = toplamSaniye % 60;
 
-            this.saniye += 1;
+        this.sayacElem.innerHTML = (saat < 10 ? "0" + saat : saat) + ":" + (dakika < 10 ? "0" + dakika : dakika) + ":" + (saniye  < 10 ? "0" + saniye : saniye);
 
-        };
-        this.duraklat = function(){
-            clearInterval(this.interval);
-            this.interval = null;
-        };
-        this.bitir = function(){
-            this.duraklat();
-            this.sayacElem.innerHTML = '';
-            this.saniye = this.gercekSaniye;
-        };
-    }
-    var Kronometre = new Kronometre('sayac');
-})
+        this.saniye += 1;
+
+    };
+    this.duraklat = function(){
+        clearInterval(this.interval);
+        this.interval = null;
+    };
+    this.bitir = function(){
+        this.duraklat();
+        this.sayacElem.innerHTML = '';
+        this.saniye = this.gercekSaniye;
+    };
+}
+var Kronometre = new Kronometre('sayac');

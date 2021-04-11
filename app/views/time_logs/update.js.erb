@@ -1,0 +1,14 @@
+<% if @check %>
+  <% if @is_stop %>
+    toastr.success("<%= I18n.t('flash.timelog.stopped') + I18n.t('flash.create.success', record: TimeLog.model_name.human)%>", 'Success..');
+    $('#timelog-form-div').load(window.location.href + " #timelog-form")
+    $('#timelogs-table').find('tbody').prepend('<%= escape_javascript(render 'time_logs/time_log', tl: @time_log) %>');
+    $('#timelog-form-div').on( "load", window.timelog_functions )
+    $('#timelog-form-div').on( "load", timelog_functions )
+
+<% else %>
+    toastr.success("<%= I18n.t('flash.update.success', record: TimeLog.model_name.human)%>", 'Success..');
+  <% end%>
+<% else %>
+  toastr.error("<%= I18n.t('flash.update.error', record: TimeLog.model_name.human) %>", 'Error..')
+<% end %>

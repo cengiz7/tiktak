@@ -11,7 +11,6 @@ class User < ApplicationRecord
   has_many :tags
 
 
-  scope :admins, -> { where(admin: true) }
 
   validates :name, :surname, presence: true
   validates :email, uniqueness: true, format: { with: URI::MailTo::EMAIL_REGEXP }, presence: true

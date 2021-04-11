@@ -2,7 +2,7 @@ class ApplicationController < ActionController::Base
   include ApplicationHelper
 
   before_action :authenticate_user!
-  helper_method :current_user, :counter_time_to_seconds, :seconds_to_counter_time
+  helper_method :current_user, :counter_to_seconds, :seconds_to_counter
 
   def current_user
     @current_user ||= User.find(session[:user_id]) if session[:user_id]
@@ -12,7 +12,7 @@ class ApplicationController < ActionController::Base
     redirect_to login_path, alert: I18n.t('flash.login.required') if current_user.nil?
   end
 
-  def counter_time_to_seconds(time_string)
+  def counter_to_seconds(time_string)
     splitted = time_string.split(':').reverse
     seconds  = 0
     seconds  += splitted.first&.to_s.to_i
@@ -21,7 +21,7 @@ class ApplicationController < ActionController::Base
     seconds
   end
 
-  def seconds_to_counter_time(seconds)
+  def seconds_to_counter(seconds)
     # Time.at(seconds).utc.strftime('%H:%M:%S')
     #
     # more than 24 hours format

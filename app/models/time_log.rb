@@ -7,6 +7,9 @@ class TimeLog < ApplicationRecord
   has_one :project
   has_many :tags
 
+  scope :in_progress, -> { where(finished_at: nil) }
+  scope :completed, -> { where.not(finished_at: nil) }
+
   private
   def user_time_zone
     self.user.time_zone

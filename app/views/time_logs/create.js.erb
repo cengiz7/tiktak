@@ -1,7 +1,8 @@
 <% if @check %>
-  toastr.success("<%= I18n.t('flash.create.success', record: TimeLog.model_name.human)%>", 'Success..');
-  $(document.getElementById('start-icon')).addClass('hide');
-  $(document.getElementById('stop-icon')).removeClass('hide');
+  toastr.success("<%= I18n.t('flash.timelog.started')%>", 'Success..');
+  $('#timelog-form-div').load(window.location.href + " #timelog-form");
+  $('#timelog-form-div').on( "load", window.timelog_functions )
+  $('#timelog-form-div').on( "load", timelog_functions )
 <% else %>
-  toastr.error("<%= I18n.t('flash.create.error', record: TimeLog.model_name.human) %>", 'Error..')
+toastr.error("<%= I18n.t('flash.create.error', record: TimeLog.model_name.human) %>", 'Error..')
 <% end %>

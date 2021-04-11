@@ -1,14 +1,14 @@
 .timelog-header
   .span
-  .timelog-header-right
-    = form_for @time_log, remote: true do |f|
+  .timelog-header-right#timelog-form-div
+    = form_for @time_log, remote: true, html: {id: 'timelog-form'} do |f|
       .input-group.input-group-rounded
-        = f.text_field :comment, class: 'input-group-field', label: false, placeholder: 'What are you working on?'
+        = f.text_field :comment, class: 'input-group-field', label: false, placeholder: 'What are you working on?', autocomplete: 'off'
         .input-group-button
-          = button_tag(type: 'submit', class: 'button', name: 'commit') do
+          = button_tag(type: 'submit', class: 'button', name: 'timelog-action', value: @time_log.started_at.nil? ? 'start' : 'stop') do
             %i.fa.fa-play-circle#start-icon{class: @time_log.started_at.nil? ? '' : 'hide'}
             %i.fa.fa-stop-circle#stop-icon{class: @time_log.started_at.nil? ? 'hide' : ''}
-        %input#counter{"data-toggle" => "datetime-dropdown", name: 'counter', value: params[:counter] || '0:00:00'}
+        %input#counter{"data-toggle" => "datetime-dropdown", name: 'counter', value: params[:counter] || '00:00:00', placeholder: '00:00:00'}
         #datetime-dropdown.dropdown-pane.bottom.float-right{"data-auto-focus" => "true", "data-dropdown" => "", 'data-close-on-click' => 'true'}
           .grid-container
             .grid-x.grid-margin-x
@@ -25,6 +25,17 @@
                 %div{style: 'height: 220px !important;'}
                   %input.hide{name:'timelog-date', id: 'timelog-date'}
                   #timelog-datepicker
+.container{style:'padding: 20px;'}
+  %table#timelogs-table
+    %thead
+      %tr
+        %th{:width => "10%"} Date
+        %th{:width => "60%"} Comments
+        %th{:width => "15%"}
+        %th{:width => "15%"} Actions
+    %tbody
+      - @time_logs.each do |tl|
+        = render 'time_logs/time_log', tl: tl
 
 -#  .timelog-header-right
 -#    %ul.menu.simple

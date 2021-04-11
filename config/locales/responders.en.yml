@@ -13,6 +13,9 @@ en:
     update:
       error: '%{record} update failed!'
       success: '%{record} successfully updated.'
+    timelog:
+      started: 'Time Log counter started.'
+      stopped: 'Time Log counter stopped.'
   response:
     welcome: 'Welcome, %{name} %{surname}!'
     errors:
