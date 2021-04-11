@@ -1,3 +1,7 @@
 en:
   hello: "Hello world"
   app_name: 'TikTak'
+
+  activerecord:
+    models:
+      time_log: "Time Log"

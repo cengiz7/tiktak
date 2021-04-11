@@ -1,0 +1,7 @@
+<% if @check %>
+  toastr.success("<%= I18n.t('flash.create.success', record: TimeLog.model_name.human)%>", 'Success..');
+  $(document.getElementById('start-icon')).addClass('hide');
+  $(document.getElementById('stop-icon')).removeClass('hide');
+<% else %>
+  toastr.error("<%= I18n.t('flash.create.error', record: TimeLog.model_name.human) %>", 'Error..')
+<% end %>

@@ -1,27 +1,29 @@
 .timelog-header
   .span
   .timelog-header-right
-    .input-group.input-group-rounded
-      %input.input-group-field{:type => "search", placeholder: 'What are you working on?'}
-      .input-group-button
-        = button_tag(type: 'submit', class: 'button') do
-          %i.fa.fa-play-circle
-      %input#counter{"data-toggle" => "datetime-dropdown", value: '0:00:00'}
-      #datetime-dropdown.dropdown-pane.bottom.float-right{"data-auto-focus" => "true", "data-dropdown" => "", 'data-close-on-click' => 'true'}
-        %form
+    = form_for @time_log, remote: true do |f|
+      .input-group.input-group-rounded
+        = f.text_field :comment, class: 'input-group-field', label: false, placeholder: 'What are you working on?'
+        .input-group-button
+          = button_tag(type: 'submit', class: 'button', name: 'commit') do
+            %i.fa.fa-play-circle#start-icon{class: @time_log.started_at.nil? ? '' : 'hide'}
+            %i.fa.fa-stop-circle#stop-icon{class: @time_log.started_at.nil? ? 'hide' : ''}
+        %input#counter{"data-toggle" => "datetime-dropdown", name: 'counter', value: params[:counter] || '0:00:00'}
+        #datetime-dropdown.dropdown-pane.bottom.float-right{"data-auto-focus" => "true", "data-dropdown" => "", 'data-close-on-click' => 'true'}
           .grid-container
             .grid-x.grid-margin-x
               .cell.medium-6
                 %label
                   %strong= t('timelogs.time.start')
-                  %input{type: "text"}/
+                  %input.counter-time{type: "text", name: 'start-time', value: params[:start_date]}/
               .cell.medium-6
                 %label
                   %strong= t('timelogs.time.stop')
-                  %input{type: "text"}/
+                  %input.counter-time{type: "text", name: 'stop-time', value: params[:stop_date]}/
               .cell.large-auto
                 %hr
                 %div{style: 'height: 220px !important;'}
+                  %input.hide{name:'timelog-date', id: 'timelog-date'}
                   #timelog-datepicker
 
 -#  .timelog-header-right

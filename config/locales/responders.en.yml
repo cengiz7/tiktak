@@ -7,6 +7,12 @@ en:
       success: 'Logged out successfully.'
     register:
       error: 'Registration failed.'
+    create:
+      error: 'Failed to create new %{record}.'
+      success: '%{record} successfully created.'
+    update:
+      error: '%{record} update failed!'
+      success: '%{record} successfully updated.'
   response:
     welcome: 'Welcome, %{name} %{surname}!'
     errors:

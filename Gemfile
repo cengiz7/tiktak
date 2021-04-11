@@ -39,6 +39,8 @@ gem 'foundation_rails_helper'
 
 gem 'foundation-datepicker-rails', '~> 0.0.3'
 
+gem 'toastr-rails'
+
 # Use Active Storage variant
 # gem 'image_processing', '~> 1.2'
 
